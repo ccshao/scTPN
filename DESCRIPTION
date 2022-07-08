@@ -1,0 +1,29 @@
+Package: scTPN
+Type: Package
+Title: Infer the transcription factors regulation network by partial correlation
+Version: 0.1.0
+Author: Chunxuan Shao
+Maintainer: Chunxuan Shao <c.shao@dkfz-heidelberg.de>
+Description: Infer a gene regulation network (GRN) based on partial correlation and TF bindings for scRNA-seq data. 
+    A consensus GRN is built on sampling of cells, and further constrained by TF bindings among pair of TFs.
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.1.2
+Depends: R (>= 4.0.0)
+Imports:
+    AnnotationDbi,
+    Biostrings,
+    data.table,
+    doRNG,
+    foreach,
+    fpCompare,
+    GenomicFeatures,
+    magrittr,
+    MotifDb,
+    qgraph
+Suggests:
+    doFuture,
+    future,
+    knitr,
+    roxygen2
