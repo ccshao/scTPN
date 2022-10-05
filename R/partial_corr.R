@@ -43,18 +43,18 @@ skel_net <- function(mtx, threshold = "BH", alpha = 0.05) {
 #' Build a consensus netork based on partial correlation networks on subsamples of large scRNAseq data.
 #'
 #' @param mtx single-cell expression matrix (log2 normalized data), genes by cells. Typically genes are transcription factors.
-#' @param n_cell number of cells to sample. If NULL, boostrapping the data and keep unique sets of cells.
+#' @param n_cell number of cells to sample (1000 cells by default). If less cells in the data then boostrapping and keepinge unique sets of cells.
 #' @param n_draw times of sampling.
 #' @param ... additional parameters to \code{skel_net}.
 #' @return
 #' A matrix.
 #' @export
-pcn <- function(mtx, n_cell = NULL, n_draw = 50, ...) {
+pcn <- function(mtx, n_cell = 1000, n_draw = 50, ...) {
   if (!is.matrix(mtx)) stop("(EE) Input should be a matrix.")
 
   suppressPackageStartupMessages(
     res <- foreach(i = seq_len(n_draw)) %dorng% {
-      if (is.null(n_cell) || n_cell > ncol(mtx)) {
+      if (n_cell > ncol(mtx)) {
         subcell <- sample(colnames(mtx), ncol(mtx), replace = TRUE) %>% unique
       } else {
         subcell <- sample(colnames(mtx), n_cell)

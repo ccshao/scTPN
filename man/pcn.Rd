@@ -4,12 +4,12 @@
 \alias{pcn}
 \title{PCN on large datasets}
 \usage{
-pcn(mtx, n_cell = NULL, n_draw = 50, ...)
+pcn(mtx, n_cell = 1000, n_draw = 50, ...)
 }
 \arguments{
 \item{mtx}{single-cell expression matrix (log2 normalized data), genes by cells. Typically genes are transcription factors.}
 
-\item{n_cell}{number of cells to sample. If NULL, boostrapping the data and keep unique sets of cells.}
+\item{n_cell}{number of cells to sample (1000 cells by default). If less cells in the data then boostrapping and keepinge unique sets of cells.}
 
 \item{n_draw}{times of sampling.}
 
